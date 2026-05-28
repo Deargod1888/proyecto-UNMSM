@@ -1,0 +1,17 @@
+
+
+a = float(input("Introducir base: "))
+b = int(input("Introducir numerador: "))
+c = int(input("Introducir denominador: "))
+if c == 0:
+    print("Error no existe una divisición con 0, elige otro numero")
+    exit()
+else:
+    b <= 0
+    c <= 0
+    a <= 0
+    b = abs(b)
+    c = abs(c)
+    a = abs(a)
+exponente = a ** (b/c)
+print(exponente)
