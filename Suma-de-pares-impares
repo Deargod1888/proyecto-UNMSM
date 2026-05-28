@@ -1,0 +1,19 @@
+\# suma de pares e impares 
+
+suma\_pares = 0
+
+suma\_impares = 0
+
+
+for i in range(1, 201):
+
+   if i % 2 == 0:
+
+       suma\_pares += i
+
+   else:
+     suma\_impares += i
+
+print(f"La suma de los números pares es: {suma\_pares}")
+
+print(f"La suma de los números impares es: {suma\_impares}")
