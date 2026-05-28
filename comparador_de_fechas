@@ -1,0 +1,46 @@
+print("--- COMPARADOR DE FECHAS ---")
+
+# --- PRIMERA FECHA ---
+print("--- PRIMERA FECHA ---")
+día1 = int(input("Introduce el día: "))
+
+if día1 <= 0:
+    print("El número no es válido.")
+else:
+    mes1 = int(input("Introduce el mes: "))
+    año1 = int(input("Introduce el año: "))
+
+    # --- SEGUNDA FECHA ---
+    print("\n--- SEGUNDA FECHA ---")
+    día2 = int(input("Introduce el día: "))
+
+    if día2 <= 0:
+        print("El número no es válido.")
+    else:
+        mes2 = int(input("Introduce el mes: "))
+        año2 = int(input("Introduce el año: "))
+
+    
+        print("\n--- RESULTADO ---")
+
+        # Comparación de fechas
+        if día1 == día2 and mes1 == mes2 and año1 == año2:
+            print("Son fechas iguales")
+
+        
+        elif año1 < año2:
+            print(f"La primera fecha ({día1}/{mes1}/{año1}) es anterior.")
+        elif año1 > año2:
+            print(f"La segunda fecha ({día2}/{mes2}/{año2}) es anterior.")
+
+        
+        elif mes1 < mes2:
+            print(f"La primera fecha ({día1}/{mes1}/{año1}) es anterior.")
+        elif mes1 > mes2:
+            print(f"La segunda fecha ({día2}/{mes2}/{año2}) es anterior.")
+
+        
+        elif día1 < día2:
+            print(f"La primera fecha ({día1}/{mes1}/{año1}) es anterior.")
+        else:
+            print(f"La segunda fecha ({día2}/{mes2}/{año2}) es anterior.")
