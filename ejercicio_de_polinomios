@@ -1,0 +1,8 @@
+a = int(input("Introducir un numero entero: "))
+b = int(input("Introducir un numero entero: "))
+c = int(input("Introducir un numero entero: "))
+d = int(input("Introducir un numero entero: "))
+
+for x in range(8, 101):
+    polinomio = a *(x ** 4) + b *(x ** 3) + c *(x ** 2) + d
+    print(polinomio)
