@@ -1,0 +1,48 @@
+print("--- CALCULADORA DE MEDIAS (ARMÓNICA VS GEOMÉTRICA) ---")
+
+# 1. Leer la cantidad de números (M)
+M = int(input("¿Cuántos números enteros positivos vas a introducir? (M): "))
+
+if M <= 0:
+    print("El valor de M debe ser un entero positivo mayor que cero.")
+else:
+    suma_inversos = 0.0
+    producto_numeros = 1.0
+    contador = 1
+
+    # 2. Captura de datos y cálculos acumulados
+    while contador <= M:
+        num = int(input(f"Introduce el número entero positivo {contador}: "))
+        
+        # Validar que el número sea positivo para evitar errores matemáticos
+        if num <= 0:
+            print("¡Error! El número debe ser mayor que cero. Inténtalo de nuevo.")
+            continue  # Repite el intento actual sin avanzar el contador
+            
+        # Acumulador para la media armónica: sumatoria de 1 / x_i
+        suma_inversos += 1.0 / num
+        
+        # Acumulador para la media geométrica: multiplicación de x_i
+        producto_numeros *= num
+        
+        contador += 1
+
+    # 3. Cálculo final de las medias
+    # Media Armónica: M / (sumatoria de inversos)
+    media_armonica = M / suma_inversos
+    
+    # Media Geométrica: Raíz M-ésima del producto (equivalente a elevar a la 1/M)
+    media_geometrica = producto_numeros ** (1.0 / M)
+    
+    # 4. Calcular la diferencia absoluta
+    diferencia = media_armonica - media_geometrica
+    # Si da negativo, lo convertimos a positivo (valor absoluto)
+    if diferencia < 0:
+        diferencia = -diferencia
+
+    # 5. Mostrar los resultados
+    print("\n" + "="*40)
+    print(f"Media Armónica ($X_h$): {media_armonica:.4f}")
+    print(f"Media Geométrica ($X_g$): {media_geometrica:.4f}")
+    print(f"Diferencia absoluta entre ambas: {diferencia:.4f}")
+    print("="*40)
