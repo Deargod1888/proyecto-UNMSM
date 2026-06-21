@@ -1,0 +1,35 @@
+def calcular_media_usuario():
+    print("--- Calculadora de Media de un Vector ---")
+    print("Introduce los números separados por espacios (por ejemplo: 10 20 30.5 40):")
+    
+    # 1. Leer la entrada del usuario
+    entrada = input("Valores: ")
+    
+    # 2. Convertir la cadena de texto en una lista de números flotantes (reales)
+    try:
+        # .split() separa el texto por los espacios libres
+        # float(x) convierte cada fragmento en un número con decimales
+        vector = [float(x) for x in entrada.split()]
+        
+        # 3. Validar si el vector está vacío
+        if len(vector) == 0:
+            print("No ingresaste ningún número.")
+            return
+
+        # 4. Calcular la suma y la media
+        suma_total = sum(vector)
+        media = suma_total / len(vector)
+        
+        # 5. Mostrar los resultados
+        print("\n--- Resultados ---")
+        print(f"Vector ingresado: {vector}")
+        print(f"Cantidad de elementos: {len(vector)}")
+        print(f"Suma total: {suma_total}")
+        print(f"La media aritmética es: {media:.2f}") # :.2f muestra solo 2 decimales
+        
+    except ValueError:
+        # Por si el usuario escribe letras o símbolos no válidos
+        print("Error: Asegúrate de ingresar solo números separados por espacios.")
+
+# Ejecutar la función
+calcular_media_usuario()

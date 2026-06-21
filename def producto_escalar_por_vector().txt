@@ -1,0 +1,33 @@
+def producto_escalar_por_vector():
+    print("--- Multiplicación de un Número por un Vector ---")
+    
+    # 1. Pedir el número (escalar) por el que se va a multiplicar
+    k = float(input("Ingrese el número (escalar) a multiplicar: "))
+    
+    # 2. Pedir el tamaño del vector
+    n = int(input("Ingrese el tamaño del vector (n): "))
+    
+    vector_original = []
+    
+    # 3. Leer los valores del vector
+    print(f"\n--- Ingrese los valores para el Vector ---")
+    for i in range(n):
+        valor = float(input(f"V[{i}]: "))
+        vector_original.append(valor)
+        
+    # 4. Calcular el vector resultante
+    vector_resultante = []
+    for i in range(n):
+        # Multiplicamos el número por la componente actual
+        nuevo_valor = k * vector_original[i]
+        vector_resultante.append(nuevo_valor)
+        
+    # 5. Mostrar los resultados
+    print("\n---------------------------------------")
+    print(f"Número (k): {k}")
+    print(f"Vector original: {vector_original}")
+    print(f"Vector resultante: {vector_resultante}")
+    print("---------------------------------------")
+
+# Ejecutar el programa
+producto_escalar_por_vector()

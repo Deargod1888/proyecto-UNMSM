@@ -1,0 +1,21 @@
+def suma_cuadrados_vector(vector):
+    """Calcula la suma de los componentes al cuadrado."""
+    return sum(x**2 for x in vector)
+
+# 1. Solicitar los datos al usuario
+entrada = input("Introduce los componentes del vector separados por espacios (ej: 2 3 4): ")
+
+# 2. Procesar la entrada: 
+# .split() separa el texto por los espacios
+# float(x) convierte cada pedazo de texto en un número decimal
+mi_vector = [float(x) for x in entrada.split()]
+
+# 3. Validar que el usuario haya ingresado algo
+if len(mi_vector) == 0:
+    print("No ingresaste ningún número.")
+else:
+    # 4. Calcular y mostrar el resultado
+    resultado = suma_cuadrados_vector(mi_vector)
+    print("\n--- Resultado ---")
+    print(f"Vector ingresado: {mi_vector}")
+    print(f"La suma de sus componentes al cuadrado es: {resultado}")

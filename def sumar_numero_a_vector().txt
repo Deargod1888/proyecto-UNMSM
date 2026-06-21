@@ -1,0 +1,32 @@
+def sumar_numero_a_vector():
+    print("--- Sumar un Número Real a un Vector ---")
+    
+    # 1. Pedir el número real que se va a sumar
+    r = float(input("Ingrese el número real a sumar: "))
+    
+    # 2. Pedir el tamaño del vector
+    n = int(input("Ingrese el tamaño del vector (n): "))
+    
+    vector_original = []
+    
+    # 3. Leer los valores del vector por teclado
+    print(f"\n--- Ingrese los valores para el Vector ---")
+    for i in range(n):
+        valor = float(input(f"V[{i}]: "))
+        vector_original.append(valor)
+        
+    # 4. Calcular el vector resultante (Sumar r a cada componente)
+    vector_resultante = []
+    for i in range(n):
+        nuevo_valor = vector_original[i] + r
+        vector_resultante.append(nuevo_valor)
+        
+    # 5. Mostrar los resultados en pantalla
+    print("\n---------------------------------------")
+    print(f"Número a sumar (r): {r}")
+    print(f"Vector original:   {vector_original}")
+    print(f"Vector resultante: {vector_resultante}")
+    print("---------------------------------------")
+
+# Ejecutar el programa
+sumar_numero_a_vector()

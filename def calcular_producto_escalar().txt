@@ -1,0 +1,35 @@
+def calcular_producto_escalar():
+    print("--- Calculadora de Producto Escalar ---")
+    
+    # 1. Pedir el tamaño de los vectores
+    n = int(input("Ingrese el tamaño de los vectores (n): "))
+    
+    vector_v = []
+    vector_w = []
+    
+    # 2. Leer los valores para el Vector V
+    print("\n--- Ingrese los valores para el Vector V ---")
+    for i in range(n):
+        valor = float(input(f"V[{i}]: "))
+        vector_v.append(valor)
+        
+    # 3. Leer los valores para el Vector W
+    print("\n--- Ingrese los valores para el Vector W ---")
+    for i in range(n):
+        valor = float(input(f"W[{i}]: "))
+        vector_w.append(valor)
+        
+    # 4. Calcular el producto escalar (Sumatoria)
+    producto_escalar = 0
+    for i in range(n):
+        producto_escalar += vector_v[i] * vector_w[i]
+        
+    # 5. Mostrar el resultado
+    print("\n---------------------------------------")
+    print(f"Vector V: {vector_v}")
+    print(f"Vector W: {vector_w}")
+    print(f"El producto escalar es: {producto_escalar}")
+    print("---------------------------------------")
+
+# Ejecutar el programa
+calcular_producto_escalar()

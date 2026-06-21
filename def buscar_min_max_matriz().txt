@@ -1,0 +1,56 @@
+def buscar_min_max_matriz():
+    print("--- Buscar el Mínimo y Máximo en una Matriz ---")
+    
+    # 1. Pedir las dimensiones de la matriz
+    m = int(input("Ingrese el número de filas (m): "))
+    n = int(input("Ingrese el número de columnas (n): "))
+    
+    if m <= 0 or n <= 0:
+        print("Las dimensiones deben ser mayores a 0.")
+        return
+
+    # Inicializar la matriz vacía
+    matriz = []
+    
+    # 2. Leer los elementos de la matriz fila por fila
+    print("\n--- Ingrese los valores de la matriz ---")
+    for i in range(m):
+        fila = []
+        for j in range(n):
+            valor = float(input(f"Matriz[{i}][{j}]: "))
+            fila.append(valor)
+        matriz.append(fila)
+        
+    # 3. Lógica para encontrar el mínimo y el máximo
+    # Inicializamos ambos con el primer elemento de la matriz (posición [0][0])
+    minimo = matriz[0][0]
+    maximo = matriz[0][0]
+    
+    pos_min = (0, 0)
+    pos_max = (0, 0)
+    
+    # Recorremos toda la matriz para comparar
+    for i in range(m):
+        for j in range(n):
+            # Comprobar si es el nuevo mínimo
+            if matriz[i][j] < minimo:
+                minimo = matriz[i][j]
+                pos_min = (i, j)
+                
+            # Comprobar si es el nuevo máximo
+            if matriz[i][j] > maximo:
+                maximo = matriz[i][j]
+                pos_max = (i, j)
+                
+    # 4. Mostrar la matriz de forma visual y los resultados
+    print("\n--- Matriz Ingresada ---")
+    for fila in matriz:
+        print(fila)
+        
+    print("\n--- Resultados ---")
+    print(f"El elemento MÍNIMO es: {minimo} en la posición Matriz{pos_min}")
+    print(f"El elemento MÁXIMO es: {maximo} en la posición Matriz{pos_max}")
+    print("---------------------------------------")
+
+# Ejecutar el programa
+buscar_min_max_matriz()
