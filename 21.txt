@@ -1,0 +1,25 @@
+# 1. Pedimos al usuario el número de filas para el triángulo
+try:
+    n = int(input("¿Cuántas filas quieres en el triángulo de Floyd?: "))
+
+    if n > 0:
+        numero_actual = 1
+        
+        # 2. Bucle externo: controla las filas
+        for fila in range(1, n + 1):
+            
+            # 3. Bucle interno: controla cuántos números se imprimen en cada fila
+            for j in range(1, fila + 1):
+                # Imprimimos el número seguido de un espacio, sin saltar de línea aún
+                print(numero_actual, end=" ")
+                # Incrementamos el contador para el siguiente número
+                numero_actual += 1
+            
+            # Al terminar cada fila, hacemos un salto de línea
+            print()
+            
+    else:
+        print("⚠️ Por favor, introduce un número mayor a 0.")
+
+except ValueError:
+    print("❌ Error: Debes introducir un número entero válido.")

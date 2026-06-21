@@ -1,0 +1,59 @@
+import math
+
+# a) Método para calcular el seno usando n términos de la serie
+def seno(x: float, n: int) -> float:
+    suma = 0.0
+    termino = x  # El primer término de la serie es x
+    
+    for i in range(1, n + 1):
+        suma += termino
+        # Calculamos el siguiente término basándonos en el actual
+        denominador = (2 * i) * (2 * i + 1)
+        termino = termino * (-x * x) / denominador
+        
+    return suma
+
+# b) Programa principal para generar la tabla
+print(f"{'Ángulo':<12}{'Tangente':<15}")
+print("-" * 27)
+
+paso = math.pi / 8
+n_terminos = 10
+
+for k in range(17):  # De 0 a 16 (cubre de 0 a 2*pi)
+    x = k * paso
+    
+    # Calcular seno
+    val_seno = seno(x, n_terminos)
+    
+    # CORRECCIÓN: Evitamos que la resta sea menor que 0 usando max()
+    radicando = max(0.0, 1.0 - val_seno**2)
+    val_coseno = math.sqrt(radicando)
+    
+    # Ajustar el signo del coseno según el cuadrante
+    pi_medios = math.pi / 2
+    tres_pi_medios = 3 * math.pi / 2
+    
+    if pi_medios < x < tres_pi_medios:
+        val_coseno = -val_coseno
+
+    # Crear la etiqueta del ángulo
+    if k == 0:
+        angulo_str = "0"
+    elif k == 8:
+        angulo_str = "π"
+    elif k == 16:
+        angulo_str = "2π"
+    elif k % 8 == 0:
+        angulo_str = f"{k//8}π"
+    elif k % 2 == 0:
+        angulo_str = f"{k//2}π/4"
+    else:
+        angulo_str = f"{k}π/8" if k > 1 else "π/8"
+
+    # Controlar si el coseno es casi cero
+    if abs(val_coseno) < 1e-9:
+        print(f"{angulo_str:<12}{'infinito':<15}")
+    else:
+        val_tangente = val_seno / val_coseno
+        print(f"{angulo_str:<12}{val_tangente:<15.4f}")

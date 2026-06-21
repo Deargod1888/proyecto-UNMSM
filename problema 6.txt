@@ -1,0 +1,29 @@
+import math
+
+# 1. Lectura y validación del ángulo
+print("Cálculo aproximado del seno (Serie de Taylor)")
+angulo_grados = float(input("Introduce un ángulo en grados (0 a 360): "))
+
+if 0 <= angulo_grados <= 360:
+    # Convertir grados a radianes (necesario para la fórmula)
+    x = angulo_grados * (math.pi / 180)
+    
+    # 2. Inicialización de variables para la serie
+    aproximacion_seno = 0
+    iteraciones = 10  # A más iteraciones, mayor precisión
+    
+    for n in range(iteraciones):
+        # La fórmula general del término es: ((-1)^n * x^(2n+1)) / (2n+1)!
+        numerador = ((-1)**n) * (x**(2 * n + 1))
+        denominador = math.factorial(2 * n + 1)
+        
+        aproximacion_seno += numerador / denominador
+    
+    # 3. Mostrar resultados
+    print(f"\nResultados para {angulo_grados}°:")
+    print(f"Valor aproximado: {aproximacion_seno:.6f}")
+    print(f"Valor real (math.sin): {math.sin(x):.6f}")
+    print(f"Diferencia: {abs(math.sin(x) - aproximacion_seno):.10f}")
+
+else:
+    print("Error: El ángulo debe estar entre 0 y 360 grados.")

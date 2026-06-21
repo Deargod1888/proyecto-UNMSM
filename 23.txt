@@ -1,0 +1,39 @@
+# 1. Entrada de datos
+num_input = input("Introduce un número entero para multiplicar por 11: ")
+
+try:
+    # Convertimos el texto en una lista de números enteros
+    # Ejemplo: "3247" -> [3, 2, 4, 7]
+    digitos = [int(d) for d in num_input]
+    
+    # Añadimos un 0 al inicio para facilitar la suma del primer dígito
+    # [0, 3, 2, 4, 7]
+    digitos_con_cero = [0] + digitos
+    
+    resultado_final = ""
+    llevo = 0
+
+    # 2. Aplicamos la regla de derecha a izquierda
+    # Recorremos desde el último índice hasta el 1
+    for i in range(len(digitos_con_cero) - 1, 0, -1):
+        actual = digitos_con_cero[i]
+        vecino_izq = digitos_con_cero[i-1]
+        
+        # Sumamos el dígito con su vecino de la izquierda y lo que llevábamos
+        suma = actual + vecino_izq + llevo
+        
+        # El dígito que se queda es el residuo de la suma entre 10
+        resultado_final = str(suma % 10) + resultado_final
+        
+        # Calculamos cuánto nos llevamos para la siguiente posición
+        llevo = suma // 10
+
+    # 3. Si al final de todo todavía llevamos algo, lo ponemos al principio
+    if llevo > 0:
+        resultado_final = str(llevo) + resultado_final
+
+    print(f"✨ Resultado final: {resultado_final}")
+    print(f"✅ Verificación (n * 11): {int(num_input) * 11}")
+
+except ValueError:
+    print("❌ Error: Por favor, introduce un número válido.")

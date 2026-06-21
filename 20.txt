@@ -1,0 +1,25 @@
+# 1. Pedimos al usuario la posición del número triangular (n)
+try:
+    n = int(input("Introduce la posición (n) del número triangular que deseas: "))
+
+    if n > 0:
+        # 2. Inicializamos el acumulador
+        numero_triangular = 0
+        
+        # 3. Sumamos los números desde 1 hasta n
+        # Usamos n + 1 porque el límite superior de range no es inclusivo
+        for i in range(1, n + 1):
+            numero_triangular += i
+            
+        # 4. Mostramos el resultado
+        print(f"✨ El {n}-ésimo número triangular es: {numero_triangular}")
+        
+        # Verificación con la fórmula matemática opcional
+        # formula = (n * (n + 1)) // 2
+        # print(f"(Verificado con fórmula: {formula})")
+        
+    else:
+        print("⚠️ Por favor, introduce un número natural mayor que 0.")
+
+except ValueError:
+    print("❌ Error: Debes introducir un número entero válido.")
