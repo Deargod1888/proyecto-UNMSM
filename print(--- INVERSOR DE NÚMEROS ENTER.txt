@@ -1,0 +1,23 @@
+print("--- INVERSOR DE NÚMEROS ENTEROS ---")
+
+# Leer el número entero
+numero = int(input("Introduce un número entero: "))
+
+# Guardamos el signo del número para devolvérselo al final
+signo = 1
+if numero < 0:
+    signo = -1
+    numero = -numero  # Trabajamos con el número en positivo
+
+numero_invertido = 0
+
+# Bucle para invertir las cifras matemáticamente
+while numero > 0:
+    ultimo_digito = numero % 10
+    numero_invertido = (numero_invertido * 10) + ultimo_digito
+    numero = numero // 10  # Recuerda que '//' elimina el último dígito
+
+# Aplicamos el signo original al número ya invertido
+resultado_final = numero_invertido * signo
+
+print(f"El número invertido es: {resultado_final}")

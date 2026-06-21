@@ -1,0 +1,29 @@
+# Leer el número de filas asegurando que sea positivo
+n = int(input("Introduce el número de filas (n entero positivo): "))
+
+if n <= 0:
+    print("El número debe ser un entero positivo.")
+else:
+    # Bucle principal para controlar las filas (de 1 hasta n)
+    for i in range(1, n + 1):
+        valor = i
+
+        # 1. PARTE CRECIENTE de la fila
+        # Imprime 'i' números hacia arriba
+        for j in range(i):
+            print(valor % 10, end=" ")
+            valor += 1
+
+        # Ajustamos el valor para empezar a bajar.
+        # Al salir del bucle anterior, 'valor' quedó 2 unidades por encima
+        # del siguiente número que debe descender.
+        valor -= 2
+
+        # 2. PARTE DECRECIENTE de la fila
+        # Imprime 'i - 1' números hacia abajo hasta volver al valor inicial
+        for j in range(i - 1):
+            print(valor % 10, end=" ")
+            valor -= 1
+
+        # Salto de línea al terminar cada fila de la pirámide
+        print()

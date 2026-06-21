@@ -1,0 +1,17 @@
+print("--- CÁLCULO DEL NÚMERO e (20 TÉRMINOS) ---")
+
+terminos = 20
+suma_e = 0.0
+factorial_actual = 1
+
+for i in range(terminos):
+    # En la primera vuelta (i=0): factorial_actual es 1 (representa 0!)
+    # En las siguientes vueltas se va multiplicando por i
+    if i > 0:
+        factorial_actual *= i
+        
+    # Sumamos 1 / i!
+    suma_e += 1.0 / factorial_actual
+
+# Mostrar el resultado con mucha precisión decimal
+print(f"El valor aproximado de e es: {suma_e:.15f}")

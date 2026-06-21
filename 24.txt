@@ -1,0 +1,52 @@
+# --- Configuración y Parámetros ---
+TOTAL_POSTULANTES = 1000
+VACANTES_DISPONIBLES = 150
+PUNTAJE_MINIMO = 120
+
+admitidos = 0
+
+print("📝 Sistema de Evaluación de Admisión")
+print("-" * 40)
+
+# --- Proceso de Evaluación ---
+for i in range(1, TOTAL_POSTULANTES + 1):
+    print(f"\n🔹 Postulante #{i}")
+    
+    # Si ya se llenaron las vacantes, podemos avisar o seguir evaluando
+    if admitidos >= VACANTES_DISPONIBLES:
+        print("⚠️ Ya no quedan vacantes disponibles.")
+        # Podríamos usar 'break' aquí si queremos detener el programa
+    
+    try:
+        # 1. Razonamiento (40 preguntas)
+        r_correctas = int(input("  Razonamiento - Correctas: "))
+        r_incorrectas = int(input("  Razonamiento - Incorrectas: "))
+        puntos_r = (r_correctas * 2) + (r_incorrectas * -1)
+        
+        # 2. Ciencias (30 preguntas)
+        c_correctas = int(input("  Ciencias - Correctas: "))
+        c_incorrectas = int(input("  Ciencias - Incorrectas: "))
+        puntos_c = (c_correctas * 3) + (c_incorrectas * -1.5)
+        
+        # 3. Letras (30 preguntas)
+        l_correctas = int(input("  Letras - Correctas: "))
+        l_incorrectas = int(input("  Letras - Incorrectas: "))
+        puntos_l = (l_correctas * 1) + (l_incorrectas * -0.5)
+        
+        # --- Cálculo Final ---
+        puntaje_total = puntos_r + puntos_c + puntos_l
+        print(f"  > Puntaje Total: {puntaje_total}")
+        
+        # --- Selección ---
+        if puntaje_total >= PUNTAJE_MINIMO and admitidos < VACANTES_DISPONIBLES:
+            admitidos += 1
+            print("  ✅ ESTADO: INGRESÓ")
+        else:
+            print("  ❌ ESTADO: NO INGRESÓ")
+            
+        print(f"  (Vacantes ocupadas: {admitidos}/{VACANTES_DISPONIBLES})")
+
+    except ValueError:
+        print("  ❌ Error: Ingresa solo números enteros.")
+
+print("\n--- Fin del proceso de selección ---")

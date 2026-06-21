@@ -1,0 +1,47 @@
+print("--- DETECTOR DE PRIMOS EN FIBONACCI ---")
+
+# 1. Ingreso de datos y validación de número natural
+numero = int(input("Introduce un número natural primo: "))
+
+if numero <= 1:
+    print("El número no es primo (los primos son mayores que 1).")
+else:
+    # 2. Verificación de si el número es PRIMO
+    es_primo = True
+    # Revisamos si tiene algún divisor desde 2 hasta la raíz cuadrada del número
+    for i in range(2, int(numero**0.5) + 1):
+        if numero % i == 0:
+            es_primo = False
+            break
+
+    if not es_primo:
+        print(f"El número {numero} NO es un número primo. Intenta con otro.")
+    else:
+        # 3. Generación de la secuencia de Fibonacci y búsqueda
+        # Iniciamos la secuencia con los dos primeros valores
+        a = 1
+        b = 1
+        
+        # Necesitamos guardar el "anterior al anterior" para la terna si el número es el primer 2
+        anterior = 0 
+        es_fibonacci = False
+
+        # El bucle corre mientras el número de Fibonacci actual (b) sea menor o igual al buscado
+        while b <= numero:
+            if b == numero:
+                es_fibonacci = True
+                break
+            
+            # Avanzamos en la secuencia de Fibonacci
+            anterior = a
+            a, b = b, a + b
+
+        # 4. Evaluación de resultados e impresión de la terna
+        if es_fibonacci:
+            # El siguiente número Fibonacci siempre es la suma de los dos actuales (a + b)
+            siguiente = a + b
+            
+            print(f"\n¡Confirmado! El número {numero} es primo y pertenece a Fibonacci.")
+            print(f"La terna es: [{anterior}, {numero}, {siguiente}]")
+        else:
+            print(f"\nEl número {numero} es primo, pero NO es un número Fibonacci.")

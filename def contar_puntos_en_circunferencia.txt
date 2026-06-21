@@ -1,0 +1,32 @@
+def contar_puntos_en_circunferencias(puntos):
+    contador = 0
+
+    for x, y in puntos:
+        # Condición para la circunferencia 1: Centro (5, 4), Radio 2
+        en_c1 = (x - 5) ** 2 + (y - 4) ** 2 <= 4
+
+        # Condición para la circunferencia 2: Centro (-5, -4), Radio 3
+        en_c2 = (x + 5) ** 2 + (y + 4) ** 2 <= 9
+
+        # Si cumple cualquiera de las dos condiciones, se contabiliza
+        if en_c1 or en_c2:
+            contador += 1
+
+    return contador
+
+
+# --- Ejemplo de Uso ---
+# Lista de puntos de prueba (enteros y reales)
+conjunto_puntos = [
+    (5, 4),  # Centro de c1 (Dentro)
+    (5, 6),  # Frontera de c1 (Dentro)
+    (6, 5),  # Dentro de c1
+    (-5, -4),  # Centro de c2 (Dentro)
+    (-2, -4),  # Frontera de c2 (Dentro)
+    (0, 0),  # Fuera de ambas
+    (5, 7),  # Fuera de c1
+    (-4.5, -3.5)  # Punto real dentro de c2
+]
+
+resultado = contar_puntos_en_circunferencias(conjunto_puntos)
+print(f"El número de puntos dentro de las áreas es: {resultado}")

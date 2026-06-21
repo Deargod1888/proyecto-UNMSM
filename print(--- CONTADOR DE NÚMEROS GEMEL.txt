@@ -1,0 +1,24 @@
+print("--- CONTADOR DE NÚMEROS GEMELOS ---")
+
+# Preguntamos cuántos números se van a evaluar
+total_numeros = int(input("¿Cuántos números vas a introducir en total?: "))
+contador_gemelos = 0
+
+for i in range(total_numeros):
+    # Leemos el número directamente como texto para poder partirlo fácil
+    num = input(f"Introduce el número {i + 1}: ")
+
+    mitad = len(num) // 2
+
+    # Extraemos las dos mitades automáticamente
+    primera_mitad = num[:mitad]
+    segunda_mitad = num[-mitad:]  # El '-' significa "cuenta desde el final hacia atrás"
+
+    # Si las mitades son iguales (y el número no es de un solo dígito)
+    if primera_mitad == segunda_mitad and len(num) > 1:
+        print("-> ¡Es gemelo!")
+        contador_gemelos += 1
+    else:
+        print("-> No es gemelo.")
+
+print(f"\nTerminado. Encontré {contador_gemelos} número(s) gemelo(s).")

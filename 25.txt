@@ -1,0 +1,36 @@
+def multiplicar_por_11(n):
+    # Convertimos el número a una lista de dígitos enteros
+    # Ejemplo: 3247 -> [3, 2, 4, 7]
+    digitos = [int(d) for d in str(n)]
+    
+    resultado = []
+    acarreo = 0
+    
+    # 1. El dígito de las unidades es igual al original
+    unidades = digitos[-1]
+    resultado.append(str(unidades))
+    
+    # 2. Sumamos las parejas de derecha a izquierda
+    # Vamos desde el penúltimo dígito hasta el primero
+    for i in range(len(digitos) - 1, 0, -1):
+        actual = digitos[i-1]
+        derecha = digitos[i]
+        
+        suma = actual + derecha + acarreo
+        resultado.append(str(suma % 10)) # Guardamos la unidad
+        acarreo = suma // 10             # Calculamos lo que "llevamos"
+    
+    # 3. El último paso es el primer dígito más el acarreo final
+    ultimo_paso = digitos[0] + acarreo
+    
+    # Si el último paso genera un nuevo dígito (ej: 9 + 1 = 10), se añade completo
+    resultado.append(str(ultimo_paso)[::-1]) 
+    
+    # Invertimos la lista porque la armamos de derecha a izquierda
+    return "".join(resultado)[::-1]
+
+# --- Prueba del programa ---
+numero = 3247
+print(f"Número original: {numero}")
+print(f"Resultado del algoritmo: {multiplicar_por_11(numero)}")
+print(f"Verificación (n * 11): {numero * 11}")
